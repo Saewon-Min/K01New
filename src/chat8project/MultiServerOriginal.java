@@ -107,12 +107,13 @@ public class MultiServerOriginal implements Limit{
 					
 					// flag가 One이면 해당 클라이언트 한명에게만 전송한다.(귓속말)
 					if (flag.equals("One")) {
-						try {
+						//try {
 						// 컬렉션에 저장된 접속자명과 일치하는 경우에만 메세지를 전송한다.
 							if(name.equals(clientName)) {
-								it_out.println("[귓속말]"+URLEncoder.encode(name, "UTF-8")+": "+URLEncoder.encode(msg, "UTF-8"));
+								//it_out.println("[귓속말]"+URLEncoder.encode(name, "UTF-8")+": "+URLEncoder.encode(msg, "UTF-8"));
+								it_out.println("[귓속말]"+name+": "+msg);
 							}
-						}catch(UnsupportedEncodingException e1){}
+						//}catch(UnsupportedEncodingException e1){}
 						
 					}else if(flag.equals("OneFix")) {
 						
@@ -120,15 +121,18 @@ public class MultiServerOriginal implements Limit{
 						String clientName2 = clientName;
 						it_out.println(name+" "+name2+" "+clientName+" "+clientName2);
 
+						Iterator<String> map = nameMap.keySet().iterator();
+						String key = map.next();
+						String msg2 = "";
+						Scanner scan = new Scanner(System.in);
+						
 						if(name2.equals("stop")) {
 							it_out.println("귓속말을 종료합니다.");
 							break;
 		 				}
-						else if(name.equals(name2) && clientName.equals(clientName2)) {
+						if(name.equals(key) && clientName.equals(nameMap.get(key))) {
 							it_out.println(name2+"에게 고정귓속말 시작");
-							Scanner scan = new Scanner(System.in);
 //							boolean tf = true;
-							String msg2 = "";
 //							while(tf)
 								it_out.println("메세지를 작성하세요(종료는 exit입력) : ");
 								msg2 = scan.nextLine();
