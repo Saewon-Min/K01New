@@ -2,47 +2,41 @@ package chat8project;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class test {
-	HashSet<String> blacklist;
-	String[] name;
+
 	
-
-	public String[] getName() {
-		return name;
-	}
-
-
-	public test(String[] name) {
-		blacklist = new HashSet<String>(); 
+	public static void main(String[] args) {
+		HashSet<String> blacklist = new HashSet<String>(); 
 		blacklist.add("스팸");
 		blacklist.add("음란물");
 		blacklist.add("광고");
-
+		
+		Scanner scan = new Scanner(System.in);
+		System.out.println("이름을 입력하세요 :");
+		String name = scan.nextLine();
+		
 		Iterator<String> it = blacklist.iterator();
-		System.out.println("");
-		
-
-		
-		
 		if(it.hasNext()) {
-	
-			if(name.equals(it)) {
-				System.out.println("blacklist => do not access");
+			
+			if (blacklist.contains(name)) {
+				System.out.println("접속 불가능");
 			}else {
-				System.out.println("****");
+				System.out.println("접속 가능");
 			}
-			
-			
+					
 		}
-		
-		
-	}
-	
-	public static void main(String[] args) {
-		
-
-		
 	}
 
 }
+
+
+
+
+
+
+
+
+
+

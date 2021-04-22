@@ -14,10 +14,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Scanner;
 
 
 
-public class MultiServerOriginal {
+public class MultiServerOriginal implements Limit{
 
 	// 멤버변수
 	static ServerSocket serverSocket = null;
@@ -25,6 +26,8 @@ public class MultiServerOriginal {
 	
 	// 클라이언트 정보저장을 위한 Map 컬렉션 생성
 	Map<String, PrintWriter> clientMap;
+	Map<String,String> nameMap = new HashMap<String,String>(); // 귓속말고정
+	Map<String,String> blockMap = new HashMap<String,String>(); // block차단
 	
 	public MultiServerOriginal() {
 		// 클라이언트의 이름과 출력스트림을 저장할 HashMap 컬렉션 생성
@@ -85,6 +88,9 @@ public class MultiServerOriginal {
 		
 		// Map에 저장된 객체의 키값(대화명)을 먼저 얻어온다.
 		Iterator<String> it = clientMap.keySet().iterator();
+		//HashSet<String> set = new HashSet<String>();
+		
+		
 		
 		// 저장된 객체(클라이언트)의 개수만큼 반복한다.
 		while(it.hasNext()) {
@@ -93,9 +99,11 @@ public class MultiServerOriginal {
 				// 컬렉션의 key는 클라이언트의 대화명이다.
 				String clientName = it.next();
 				
+				
 				try {
 					// 각 클라이언트의 PrintWriter객체를 얻어온다.
 					PrintWriter it_out = (PrintWriter)clientMap.get(clientName);
+					nameMap.put(name, clientName); // name: 보내는사람이름 ,clientName : 받는사람이름
 					
 					// flag가 One이면 해당 클라이언트 한명에게만 전송한다.(귓속말)
 					if (flag.equals("One")) {
@@ -105,48 +113,73 @@ public class MultiServerOriginal {
 								it_out.println("[귓속말]"+URLEncoder.encode(name, "UTF-8")+": "+URLEncoder.encode(msg, "UTF-8"));
 							}
 						}catch(UnsupportedEncodingException e1){}
+						
 					}else if(flag.equals("OneFix")) {
 						
-						//while(true) {
-							//try {
-								if(name.equals(clientName)) {
-									//it_out.println("[귓속말]"+URLEncoder.encode(name, "UTF-8")+": "+URLEncoder.encode(msg, "UTF-8"));
-									it_out.println("[귓속말]"+name+": "+msg);
-//									if(flag.equals("FixOut")) {
-//										break;
-//									}
-								
-								}
-								
-							//}catch(UnsupportedEncodingException e1){}
-							
-						//}	
+						String name2 = name;
+						String clientName2 = clientName;
+						it_out.println(name+" "+name2+" "+clientName+" "+clientName2);
+
+						if(name2.equals("stop")) {
+							it_out.println("귓속말을 종료합니다.");
+							break;
+		 				}
+						else if(name.equals(name2) && clientName.equals(clientName2)) {
+							it_out.println(name2+"에게 고정귓속말 시작");
+							Scanner scan = new Scanner(System.in);
+//							boolean tf = true;
+							String msg2 = "";
+//							while(tf)
+								it_out.println("메세지를 작성하세요(종료는 exit입력) : ");
+								msg2 = scan.nextLine();
+								sendAllMsg(name, msg2,"One");
+//								if(msg2.equals("exit")) {
+//									tf = false;
 						
+//								}
+						}
+						//try {
+						
+						
+						
+						it_out.println("귓속말을 종료하려면 /unfixto를 입력해주세요");
+						
+
+							
+						//}catch(UnsupportedEncodingException e1){}
+							
+						
+					
 					}else if(flag.equals("Block")) {
 						
-						while(true) {
-							try {
-								if(name.equals(clientName)) {
-									it_out.println("[귓속말]"+URLEncoder.encode(name, "UTF-8")+": "+URLEncoder.encode(msg, "UTF-8"));
-									
-									if(flag.equals("UnBlock")) {
-										break;
-									}
+						
+//							try {
+							if(name.equals("stop")) {
+								it_out.println("블럭차단을 종료합니다.");
+								break;
+							}	
 								
-								}
-								
-							}catch(UnsupportedEncodingException e1){}
 							
-						}	
+							Scanner scan = new Scanner(System.in);
+							it_out.println("블럭차단을 종료하려면 /unblock을 입력해주세요");
+							//String exit;
+							//exit = scan.nextLine();
+							System.out.println("입력 : "+scan.nextLine());
+							
+							
+//							}catch(UnsupportedEncodingException e1){}
+							
+						
 						
 					}else if(flag.equals("List")) {
 						
 //							try {
-								for(String key : clientMap.keySet() ) {
-									//it_out.print("[list] : "+URLEncoder.encode(key, "UTF-8"));
-									it_out.println("[list] : "+key);
-								}
-								
+							it_out.print("[현재 접속자] :");
+							for(String key : clientMap.keySet() ) {
+								//it_out.print("[list] : "+URLEncoder.encode(key, "UTF-8"));
+								it_out.print(key + " ");
+							}
+							it_out.println();
 
 //							}catch(UnsupportedEncodingException e1){}
 						
@@ -188,6 +221,7 @@ public class MultiServerOriginal {
 		Socket socket;
 		PrintWriter out = null;
 		BufferedReader in = null;
+		int nameCnt=0;
 		
 		public MultiServerT(Socket socket) {
 			this.socket = socket;
@@ -227,13 +261,20 @@ public class MultiServerOriginal {
 
 					// 현재 접속한 클라이언트를 HashMap에 저장한다.
 					clientMap.put(name, out);
+
 					
 					// 접속자의 이름을 서버의 콘솔에 띄워주고
 					System.out.println(name + " 접속");
 					// HashMap에 저장된 객체의 수로 현재 접속자를 파악할 수 있다.
 					System.out.println("현재 접속자 수는 "+clientMap.size()+"명 입니다.");
 					
-					HashSet<String> set = new HashSet<String>();
+					if (clientMap.size()>MAX_ACCEPT) {
+						System.out.println("최대 인원을 초과하여 접속이 불가능합니다..");
+						out.println("최대 인원을 초과하여 접속이 불가능합니다.");
+						return;
+					}
+					
+					//HashSet<String> set = new HashSet<String>();
 					
 					// 입력한 메세지는 모든 클라이언트에게 Echo된다.
 					while(in != null) {
@@ -258,18 +299,25 @@ public class MultiServerOriginal {
 							}
 							if (strArr[0].equals("/to")) {
 								sendAllMsg(strArr[1], msgContent,"One");
-							}else if(strArr[0].equals("/list")) {
-								sendAllMsg("", "","List");
-								
-								
-							}else if(strArr[0].equals("/fixto")) {
-								set.add(msgContent);
-								sendAllMsg(strArr[1],msgContent ,"OneFix");
-									
-								
-							}else if(strArr[0].equals("/unfixto")) {
-								sendAllMsg("", "","FixOut");
 							}
+							if(strArr[0].equals("/list")) {
+								sendAllMsg("", "","List");
+							}
+							if(strArr[0].equals("/fixto")) {
+								sendAllMsg(strArr[1], "","OneFix");
+								//set.add(msgContent);
+							}
+							if(strArr[0].equals("/unfixto")) {
+								sendAllMsg("stop","" ,"OneFix");
+							}
+							if(strArr[0].equals("/block")) {
+								sendAllMsg("","" ,"Block");
+							}
+							if(strArr[0].equals("/unblock")) {
+								sendAllMsg("stop","" ,"Block");
+							}
+							
+							
 							
 //						}else if(s.charAt(0)=='@'){
 //							if(strArr2[0].equals("/fixto")==true)

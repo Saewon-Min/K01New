@@ -50,15 +50,20 @@ public class Receiver extends Thread {
 				
 				System.out.println("SocketException 발생됨 . 루프탈출");
 				break;
+			} catch (NullPointerException e) {
+				System.out.print("");
+				break;
+			
 			} catch (Exception e) {
-				System.out.println("예외>Receiver>run1 : "+e);
+				System.out.println("예외>Receiver>run2 : "+e);
+				
 			}
 		}
 		try {
 			in.close();
 		
 		} catch (Exception e) {
-			System.out.println("예외>Receiver>run2 : " + e);
+			System.out.println("예외>Receiver>run3 : " + e);
 		}
 	}
 	

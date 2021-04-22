@@ -1,7 +1,9 @@
 package chat8project;
  
 
-import java.net.Socket;  
+import java.net.Socket;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class MultiClient {
@@ -11,16 +13,24 @@ public class MultiClient {
 		System.out.println("이름을 입력하세요 :");
 		Scanner scanner = new Scanner(System.in);
 		String s_name = scanner.nextLine();
-		
-		/*
-		메세지 송수신을 위한 클래스를 별도로 만들었으므로
-		해당 멤버변수는 필요없음
-		PrintWriter out = null;
-		BufferedReader in = null;
-		 */
-		
+		int nameCnt = 0;
 		
 		try {
+			// 블랙리스트 처리 부분
+			HashSet<String> blacklist = new HashSet<String>(); 
+			blacklist.add("스팸");
+			blacklist.add("음란물");
+			blacklist.add("광고");
+
+			Iterator<String> it = blacklist.iterator();
+
+			if (blacklist.contains(s_name)) {
+				System.out.println("접속 불가능");
+				return;
+			}
+			
+
+		
 			// 서버로 접속 요청
 			String ServerIP = "localhost";
 			if(args.length>0) {
@@ -29,6 +39,7 @@ public class MultiClient {
 			
 			Socket socket = new Socket(ServerIP,9999);
 			System.out.println("서버와 연결되었습니다.");
+			
 			
 			// 서버가 Echo해준 메세지를 받기위한 리시버 쓰레드 객체 생성
 		
@@ -42,6 +53,9 @@ public class MultiClient {
 				sender.start();
 				
 			
+			
+				
+				
 		} catch (Exception e) {
 			System.out.println("예외발생[MultiClient]"+e);	
 		}
