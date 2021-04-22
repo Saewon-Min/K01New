@@ -1,0 +1,663 @@
+<<<<<<< HEAD
+MultiServer
+Microsoft Windows [Version 10.0.19041.867]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\kosmo_19>cd \
+
+C:\>cd 02Workspaces\K01NetworkChat
+
+C:\02Workspaces\K01NetworkChat>dir
+ C 드라이브의 볼륨에는 이름이 없습니다.
+ 볼륨 일련 번호: 827D-8B8D
+
+ C:\02Workspaces\K01NetworkChat 디렉터리
+
+2021-04-19  오후 12:52    <DIR>          .
+2021-04-19  오후 12:52    <DIR>          ..
+2021-04-19  오후 12:52               396 .classpath
+2021-04-19  오후 12:52               390 .project
+2021-04-19  오후 12:52    <DIR>          .settings
+2021-04-19  오후 12:54    <DIR>          bin
+2021-04-19  오후 12:54    <DIR>          src
+               2개 파일                 786 바이트
+               5개 디렉터리  175,925,080,064 바이트 남음
+
+C:\02Workspaces\K01NetworkChat>cd bin
+
+C:\02Workspaces\K01NetworkChat\bin>dir
+ C 드라이브의 볼륨에는 이름이 없습니다.
+ 볼륨 일련 번호: 827D-8B8D
+
+ C:\02Workspaces\K01NetworkChat\bin 디렉터리
+
+2021-04-19  오후 12:54    <DIR>          .
+2021-04-19  오후 12:54    <DIR>          ..
+2021-04-19  오후 12:54    <DIR>          chat1
+               0개 파일                   0 바이트
+               3개 디렉터리  175,925,075,968 바이트 남음
+
+C:\02Workspaces\K01NetworkChat\bin>cd chat1
+
+C:\02Workspaces\K01NetworkChat\bin\chat1>dir
+ C 드라이브의 볼륨에는 이름이 없습니다.
+ 볼륨 일련 번호: 827D-8B8D
+
+ C:\02Workspaces\K01NetworkChat\bin\chat1 디렉터리
+
+2021-04-19  오후 12:54    <DIR>          .
+2021-04-19  오후 12:54    <DIR>          ..
+2021-04-19  오후 01:17             1,999 MultiClient.class
+2021-04-19  오후 01:17             2,404 MultiServer.class
+               2개 파일               4,403 바이트
+               2개 디렉터리  175,925,071,872 바이트 남음
+
+C:\02Workspaces\K01NetworkChat\bin\chat1>cd ..
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+Error: LinkageError occurred while loading main class chat1.MultiServer
+        java.lang.UnsupportedClassVersionError: chat1/MultiServer has been compiled by a more recent version of the Java Runtime (class file version 59.0), this version of the Java Runtime only recognizes class file versions up to 55.0
+
+C:\02Workspaces\K01NetworkChat\bin>path
+PATH=C:\01DevelopKits\oraclexe\app\oracle\product\11.2.0\server\bin;;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\01DevelopKits\jdk-11\bin;C:\Users\kosmo_19\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Bandizip\
+
+=> path에 01DevelopKits\jdk-11\bin; 있는지 확인
+
+
+C:\02Workspaces\K01NetworkChat\bin>java
+Usage: java [options] <mainclass> [args...]
+           (to execute a class)
+   or  java [options] -jar <jarfile> [args...]
+           (to execute a jar file)
+   or  java [options] -m <module>[/<mainclass>] [args...]
+       java [options] --module <module>[/<mainclass>] [args...]
+           (to execute the main class in a module)
+   or  java [options] <sourcefile> [args]
+           (to execute a single source-file program)
+
+ Arguments following the main class, source file, -jar <jarfile>,
+ -m or --module <module>/<mainclass> are passed as the arguments to
+ main class.
+
+ where options include:
+
+    -cp <class search path of directories and zip/jar files>
+    -classpath <class search path of directories and zip/jar files>
+    --class-path <class search path of directories and zip/jar files>
+                  A ; separated list of directories, JAR archives,
+                  and ZIP archives to search for class files.
+    -p <module path>
+    --module-path <module path>...
+                  A ; separated list of directories, each directory
+                  is a directory of modules.
+    --upgrade-module-path <module path>...
+                  A ; separated list of directories, each directory
+                  is a directory of modules that replace upgradeable
+                  modules in the runtime image
+    --add-modules <module name>[,<module name>...]
+                  root modules to resolve in addition to the initial module.
+                  <module name> can also be ALL-DEFAULT, ALL-SYSTEM,
+                  ALL-MODULE-PATH.
+    --list-modules
+                  list observable modules and exit
+    -d <module name>
+    --describe-module <module name>
+                  describe a module and exit
+    --dry-run     create VM and load main class but do not execute main method.
+                  The --dry-run option may be useful for validating the
+                  command-line options such as the module system configuration.
+    --validate-modules
+                  validate all modules and exit
+                  The --validate-modules option may be useful for finding
+                  conflicts and other errors with modules on the module path.
+    -D<name>=<value>
+                  set a system property
+    -verbose:[class|module|gc|jni]
+                  enable verbose output
+    -version      print product version to the error stream and exit
+    --version     print product version to the output stream and exit
+    -showversion  print product version to the error stream and continue
+    --show-version
+                  print product version to the output stream and continue
+    --show-module-resolution
+                  show module resolution output during startup
+    -? -h -help
+                  print this help message to the error stream
+    --help        print this help message to the output stream
+    -X            print help on extra options to the error stream
+    --help-extra  print help on extra options to the output stream
+    -ea[:<packagename>...|:<classname>]
+    -enableassertions[:<packagename>...|:<classname>]
+                  enable assertions with specified granularity
+    -da[:<packagename>...|:<classname>]
+    -disableassertions[:<packagename>...|:<classname>]
+                  disable assertions with specified granularity
+    -esa | -enablesystemassertions
+                  enable system assertions
+    -dsa | -disablesystemassertions
+                  disable system assertions
+    -agentlib:<libname>[=<options>]
+                  load native agent library <libname>, e.g. -agentlib:jdwp
+                  see also -agentlib:jdwp=help
+    -agentpath:<pathname>[=<options>]
+                  load native agent library by full pathname
+    -javaagent:<jarpath>[=<options>]
+                  load Java programming language agent, see java.lang.instrument
+    -splash:<imagepath>
+                  show splash screen with specified image
+                  HiDPI scaled images are automatically supported and used
+                  if available. The unscaled image filename, e.g. image.ext,
+                  should always be passed as the argument to the -splash option.
+                  The most appropriate scaled image provided will be picked up
+                  automatically.
+                  See the SplashScreen API documentation for more information
+    @argument files
+                  one or more argument files containing options
+    -disable-@files
+                  prevent further argument file expansion
+    --enable-preview
+                  allow classes to depend on preview features of this release
+To specify an argument for a long option, you can use --<name>=<value> or
+--<name> <value>.
+
+=> 이클립스에서 window - preference - java - compile - 15를11로 바꾸고 apply - apply and close
+=> 이클립스에서 K02NetworkChat 우클릭 - properties - compile - 15를11로 바꾸고 apply - apply and close
+
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1:57567
+Client에서 읽어옴 : 민세원
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1(클라이언트)의57703포트를 통해 /127.0.0.1(서버)의 9999포트로 연결되었습니다.
+Client에서 읽어옴 : 민세투
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+서버가 시작되었습니다.
+
+
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+서버가 시작되었습니다.
+/192.168.219.113(클라이언트)의 58501포트를 통해 /192.168.219.111(서버)의 9999포트로 연결되었습니다.
+Client에서 읽어옴 : 혜수입니당 ㅎㅎ
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+서버가 시작되었습니다.
+/192.168.219.113(클라이언트)의 58653포트를 통해 /192.168.219.111(서버)의 9999포트로 연결되었습니다.
+Client에서 읽어옴 : 너무신기합니다네트워크 ㅎㅎㅎㅎ 열심히해야겠어요 ㅎㅎㅎㅎㅎㅎㅎㅎ
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+서버가 시작되었습니다.
+/192.168.219.113(클라이언트)의 58670포트를 통해 /192.168.219.111(서버)의 9999포트로 연결되었습니다.
+Client에서 읽어옴 : ㅎㅎㅎㅎㅎ 잡담 꿀잼잼 ~~~~~ 후후
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1(클라이언트)의 57870포트를 통해 /127.0.0.1(서버)의 9999포트로 연결되었습니다.
+Client에서 읽어옴 : 난나
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat2.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 57921포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+민세원 접속
+민세원 ==> 랄랄라
+민세원 ==> 난난난
+민세원 ==> 집에가고싶다아
+민세원 ==> 졸리다아
+민세원 ==> 눈누눈
+민세원 ==> 치킨
+민세원 ==> 와우
+민세원 ==> 오우
+민세원 ==> 안녕
+민세원 ==> 계속저장됨
+민세원 ==> ㅂ
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat2.MultiServer
+서버가 시작되었습니다.
+/192.168.219.113의 58842포트에 /192.168.219.111의 9999포트로 연결되었습니다.
+혜수짱 접속
+혜수짱 ==> 안녕
+혜수짱 ==> 하세요
+혜수짱 ==> ㅎㅎㅎ
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat2.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 58168포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+민세원 접속
+민세원 ==> 히히
+민세원 ==> 눈누
+민세원 ==> 나나나ㅏ
+민세원 ==> 접속해제
+민세원 ==> 할거에여
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat2.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 57978포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+qq 접속
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat2.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 58082포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+예외1 : java.net.SocketException: Connection reset
+
+C:\02Workspaces\K01NetworkChat\bin>java chat3.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 58135포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+민세원 접속
+민세원 ==> ㅇㅇ
+민세원 ==> ㅇㅇ
+민세원 ==> ㅈㅈ
+민세원 ==> ㅈㅈ
+민세원 ==> ㅐㅐ
+민세원 ==> ㅐㅐ
+민세원 ==> ㅔㅔ
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>
+
+
+
+-------------------------------------------------------------------------------------------
+MultiClient
+
+Microsoft Windows [Version 10.0.19041.867]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\kosmo_19>cd \
+
+C:\>cd C:\02Workspaces\K01NetworkChat
+
+C:\02Workspaces\K01NetworkChat>cd bin
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiClient
+이름을 입력하세요 :
+민세원
+서버와 연결되었습니다.
+Receive : Server에서 응답 : 민세원
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiClient
+이름을 입력하세요 :
+민세투
+서버와 연결되었습니다.
+Receive : Server에서 응답 : 민세투
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiClient 192.168.0.100
+이름을 입력하세요 :
+민세
+
+C:\02Workspaces\K01NetworkChat\bin>ipconfig
+
+Windows IP 구성
+
+
+이더넷 어댑터 이더넷:
+
+   연결별 DNS 접미사. . . . :
+   링크-로컬 IPv6 주소 . . . . : fe80::bd14:b9a6:df1c:fb37%11
+   IPv4 주소 . . . . . . . . . : 192.168.219.111
+   서브넷 마스크 . . . . . . . : 255.255.255.0
+   기본 게이트웨이 . . . . . . : 192.168.219.1
+
+C:\02Workspaces\K01NetworkChat\bin>java chat2.MultiClient
+이름을 입력하세요 :
+민세원
+서버와 연결되었습니다.
+Receive : > 민세원님이 접속했습니다.
+히히
+Receive : >  민세원 ==> 히히
+눈누
+Receive : >  민세원 ==> 눈누
+나나나ㅏ
+Receive : >  민세원 ==> 나나나ㅏ
+접속해제
+Receive : >  민세원 ==> 접속해제
+할거에여
+Receive : >  민세원 ==> 할거에여
+q
+
+C:\02Workspaces\K01NetworkChat\bin>
+=======
+MultiServer
+Microsoft Windows [Version 10.0.19041.867]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\kosmo_19>cd \
+
+C:\>cd 02Workspaces\K01NetworkChat
+
+C:\02Workspaces\K01NetworkChat>dir
+ C 드라이브의 볼륨에는 이름이 없습니다.
+ 볼륨 일련 번호: 827D-8B8D
+
+ C:\02Workspaces\K01NetworkChat 디렉터리
+
+2021-04-19  오후 12:52    <DIR>          .
+2021-04-19  오후 12:52    <DIR>          ..
+2021-04-19  오후 12:52               396 .classpath
+2021-04-19  오후 12:52               390 .project
+2021-04-19  오후 12:52    <DIR>          .settings
+2021-04-19  오후 12:54    <DIR>          bin
+2021-04-19  오후 12:54    <DIR>          src
+               2개 파일                 786 바이트
+               5개 디렉터리  175,925,080,064 바이트 남음
+
+C:\02Workspaces\K01NetworkChat>cd bin
+
+C:\02Workspaces\K01NetworkChat\bin>dir
+ C 드라이브의 볼륨에는 이름이 없습니다.
+ 볼륨 일련 번호: 827D-8B8D
+
+ C:\02Workspaces\K01NetworkChat\bin 디렉터리
+
+2021-04-19  오후 12:54    <DIR>          .
+2021-04-19  오후 12:54    <DIR>          ..
+2021-04-19  오후 12:54    <DIR>          chat1
+               0개 파일                   0 바이트
+               3개 디렉터리  175,925,075,968 바이트 남음
+
+C:\02Workspaces\K01NetworkChat\bin>cd chat1
+
+C:\02Workspaces\K01NetworkChat\bin\chat1>dir
+ C 드라이브의 볼륨에는 이름이 없습니다.
+ 볼륨 일련 번호: 827D-8B8D
+
+ C:\02Workspaces\K01NetworkChat\bin\chat1 디렉터리
+
+2021-04-19  오후 12:54    <DIR>          .
+2021-04-19  오후 12:54    <DIR>          ..
+2021-04-19  오후 01:17             1,999 MultiClient.class
+2021-04-19  오후 01:17             2,404 MultiServer.class
+               2개 파일               4,403 바이트
+               2개 디렉터리  175,925,071,872 바이트 남음
+
+C:\02Workspaces\K01NetworkChat\bin\chat1>cd ..
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+Error: LinkageError occurred while loading main class chat1.MultiServer
+        java.lang.UnsupportedClassVersionError: chat1/MultiServer has been compiled by a more recent version of the Java Runtime (class file version 59.0), this version of the Java Runtime only recognizes class file versions up to 55.0
+
+C:\02Workspaces\K01NetworkChat\bin>path
+PATH=C:\01DevelopKits\oraclexe\app\oracle\product\11.2.0\server\bin;;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\01DevelopKits\jdk-11\bin;C:\Users\kosmo_19\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Bandizip\
+
+=> path에 01DevelopKits\jdk-11\bin; 있는지 확인
+
+
+C:\02Workspaces\K01NetworkChat\bin>java
+Usage: java [options] <mainclass> [args...]
+           (to execute a class)
+   or  java [options] -jar <jarfile> [args...]
+           (to execute a jar file)
+   or  java [options] -m <module>[/<mainclass>] [args...]
+       java [options] --module <module>[/<mainclass>] [args...]
+           (to execute the main class in a module)
+   or  java [options] <sourcefile> [args]
+           (to execute a single source-file program)
+
+ Arguments following the main class, source file, -jar <jarfile>,
+ -m or --module <module>/<mainclass> are passed as the arguments to
+ main class.
+
+ where options include:
+
+    -cp <class search path of directories and zip/jar files>
+    -classpath <class search path of directories and zip/jar files>
+    --class-path <class search path of directories and zip/jar files>
+                  A ; separated list of directories, JAR archives,
+                  and ZIP archives to search for class files.
+    -p <module path>
+    --module-path <module path>...
+                  A ; separated list of directories, each directory
+                  is a directory of modules.
+    --upgrade-module-path <module path>...
+                  A ; separated list of directories, each directory
+                  is a directory of modules that replace upgradeable
+                  modules in the runtime image
+    --add-modules <module name>[,<module name>...]
+                  root modules to resolve in addition to the initial module.
+                  <module name> can also be ALL-DEFAULT, ALL-SYSTEM,
+                  ALL-MODULE-PATH.
+    --list-modules
+                  list observable modules and exit
+    -d <module name>
+    --describe-module <module name>
+                  describe a module and exit
+    --dry-run     create VM and load main class but do not execute main method.
+                  The --dry-run option may be useful for validating the
+                  command-line options such as the module system configuration.
+    --validate-modules
+                  validate all modules and exit
+                  The --validate-modules option may be useful for finding
+                  conflicts and other errors with modules on the module path.
+    -D<name>=<value>
+                  set a system property
+    -verbose:[class|module|gc|jni]
+                  enable verbose output
+    -version      print product version to the error stream and exit
+    --version     print product version to the output stream and exit
+    -showversion  print product version to the error stream and continue
+    --show-version
+                  print product version to the output stream and continue
+    --show-module-resolution
+                  show module resolution output during startup
+    -? -h -help
+                  print this help message to the error stream
+    --help        print this help message to the output stream
+    -X            print help on extra options to the error stream
+    --help-extra  print help on extra options to the output stream
+    -ea[:<packagename>...|:<classname>]
+    -enableassertions[:<packagename>...|:<classname>]
+                  enable assertions with specified granularity
+    -da[:<packagename>...|:<classname>]
+    -disableassertions[:<packagename>...|:<classname>]
+                  disable assertions with specified granularity
+    -esa | -enablesystemassertions
+                  enable system assertions
+    -dsa | -disablesystemassertions
+                  disable system assertions
+    -agentlib:<libname>[=<options>]
+                  load native agent library <libname>, e.g. -agentlib:jdwp
+                  see also -agentlib:jdwp=help
+    -agentpath:<pathname>[=<options>]
+                  load native agent library by full pathname
+    -javaagent:<jarpath>[=<options>]
+                  load Java programming language agent, see java.lang.instrument
+    -splash:<imagepath>
+                  show splash screen with specified image
+                  HiDPI scaled images are automatically supported and used
+                  if available. The unscaled image filename, e.g. image.ext,
+                  should always be passed as the argument to the -splash option.
+                  The most appropriate scaled image provided will be picked up
+                  automatically.
+                  See the SplashScreen API documentation for more information
+    @argument files
+                  one or more argument files containing options
+    -disable-@files
+                  prevent further argument file expansion
+    --enable-preview
+                  allow classes to depend on preview features of this release
+To specify an argument for a long option, you can use --<name>=<value> or
+--<name> <value>.
+
+=> 이클립스에서 window - preference - java - compile - 15를11로 바꾸고 apply - apply and close
+=> 이클립스에서 K02NetworkChat 우클릭 - properties - compile - 15를11로 바꾸고 apply - apply and close
+
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1:57567
+Client에서 읽어옴 : 민세원
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1(클라이언트)의57703포트를 통해 /127.0.0.1(서버)의 9999포트로 연결되었습니다.
+Client에서 읽어옴 : 민세투
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+서버가 시작되었습니다.
+
+
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+서버가 시작되었습니다.
+/192.168.219.113(클라이언트)의 58501포트를 통해 /192.168.219.111(서버)의 9999포트로 연결되었습니다.
+Client에서 읽어옴 : 혜수입니당 ㅎㅎ
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+서버가 시작되었습니다.
+/192.168.219.113(클라이언트)의 58653포트를 통해 /192.168.219.111(서버)의 9999포트로 연결되었습니다.
+Client에서 읽어옴 : 너무신기합니다네트워크 ㅎㅎㅎㅎ 열심히해야겠어요 ㅎㅎㅎㅎㅎㅎㅎㅎ
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+서버가 시작되었습니다.
+/192.168.219.113(클라이언트)의 58670포트를 통해 /192.168.219.111(서버)의 9999포트로 연결되었습니다.
+Client에서 읽어옴 : ㅎㅎㅎㅎㅎ 잡담 꿀잼잼 ~~~~~ 후후
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1(클라이언트)의 57870포트를 통해 /127.0.0.1(서버)의 9999포트로 연결되었습니다.
+Client에서 읽어옴 : 난나
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat2.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 57921포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+민세원 접속
+민세원 ==> 랄랄라
+민세원 ==> 난난난
+민세원 ==> 집에가고싶다아
+민세원 ==> 졸리다아
+민세원 ==> 눈누눈
+민세원 ==> 치킨
+민세원 ==> 와우
+민세원 ==> 오우
+민세원 ==> 안녕
+민세원 ==> 계속저장됨
+민세원 ==> ㅂ
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat2.MultiServer
+서버가 시작되었습니다.
+/192.168.219.113의 58842포트에 /192.168.219.111의 9999포트로 연결되었습니다.
+혜수짱 접속
+혜수짱 ==> 안녕
+혜수짱 ==> 하세요
+혜수짱 ==> ㅎㅎㅎ
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat2.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 58168포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+민세원 접속
+민세원 ==> 히히
+민세원 ==> 눈누
+민세원 ==> 나나나ㅏ
+민세원 ==> 접속해제
+민세원 ==> 할거에여
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat2.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 57978포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+qq 접속
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>java chat2.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 58082포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+예외1 : java.net.SocketException: Connection reset
+
+C:\02Workspaces\K01NetworkChat\bin>java chat3.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 58135포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+민세원 접속
+민세원 ==> ㅇㅇ
+민세원 ==> ㅇㅇ
+민세원 ==> ㅈㅈ
+민세원 ==> ㅈㅈ
+민세원 ==> ㅐㅐ
+민세원 ==> ㅐㅐ
+민세원 ==> ㅔㅔ
+Bye
+
+C:\02Workspaces\K01NetworkChat\bin>
+
+
+
+-------------------------------------------------------------------------------------------
+MultiClient
+
+Microsoft Windows [Version 10.0.19041.867]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\kosmo_19>cd \
+
+C:\>cd C:\02Workspaces\K01NetworkChat
+
+C:\02Workspaces\K01NetworkChat>cd bin
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiClient
+이름을 입력하세요 :
+민세원
+서버와 연결되었습니다.
+Receive : Server에서 응답 : 민세원
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiClient
+이름을 입력하세요 :
+민세투
+서버와 연결되었습니다.
+Receive : Server에서 응답 : 민세투
+
+C:\02Workspaces\K01NetworkChat\bin>java chat1.MultiClient 192.168.0.100
+이름을 입력하세요 :
+민세
+
+C:\02Workspaces\K01NetworkChat\bin>ipconfig
+
+Windows IP 구성
+
+
+이더넷 어댑터 이더넷:
+
+   연결별 DNS 접미사. . . . :
+   링크-로컬 IPv6 주소 . . . . : fe80::bd14:b9a6:df1c:fb37%11
+   IPv4 주소 . . . . . . . . . : 192.168.219.111
+   서브넷 마스크 . . . . . . . : 255.255.255.0
+   기본 게이트웨이 . . . . . . : 192.168.219.1
+
+C:\02Workspaces\K01NetworkChat\bin>java chat2.MultiClient
+이름을 입력하세요 :
+민세원
+서버와 연결되었습니다.
+Receive : > 민세원님이 접속했습니다.
+히히
+Receive : >  민세원 ==> 히히
+눈누
+Receive : >  민세원 ==> 눈누
+나나나ㅏ
+Receive : >  민세원 ==> 나나나ㅏ
+접속해제
+Receive : >  민세원 ==> 접속해제
+할거에여
+Receive : >  민세원 ==> 할거에여
+q
+
+C:\02Workspaces\K01NetworkChat\bin>
+>>>>>>> refs/remotes/origin/master
