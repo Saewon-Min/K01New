@@ -28,6 +28,10 @@ public class MultiServerOriginal implements Limit{
 	Map<String, PrintWriter> clientMap;
 	Map<String,String> nameMap = new HashMap<String,String>(); // 귓속말고정
 	Map<String,String> blockMap = new HashMap<String,String>(); // block차단
+
+	HashSet<String> pWords = new HashSet<String>(); //대화금칙어처리
+	HashSet<String> blacklist = new HashSet<String>(); // 블랙리스트 처리 부분
+	
 	
 	public MultiServerOriginal() {
 		// 클라이언트의 이름과 출력스트림을 저장할 HashMap 컬렉션 생성
@@ -89,13 +93,15 @@ public class MultiServerOriginal implements Limit{
 		// Map에 저장된 객체의 키값(대화명)을 먼저 얻어온다.
 		Iterator<String> it = clientMap.keySet().iterator();
 		//HashSet<String> set = new HashSet<String>();
-		
+		Scanner scan = new Scanner(System.in);
 		
 		
 		// 저장된 객체(클라이언트)의 개수만큼 반복한다.
 		while(it.hasNext()) {
 			
 			try {
+
+				
 				// 컬렉션의 key는 클라이언트의 대화명이다.
 				String clientName = it.next();
 				
@@ -104,6 +110,8 @@ public class MultiServerOriginal implements Limit{
 					// 각 클라이언트의 PrintWriter객체를 얻어온다.
 					PrintWriter it_out = (PrintWriter)clientMap.get(clientName);
 					nameMap.put(name, clientName); // name: 보내는사람이름 ,clientName : 받는사람이름
+					System.out.println("보내는사람 : "+name+" 받는사람 : "+clientName);
+					
 					
 					// flag가 One이면 해당 클라이언트 한명에게만 전송한다.(귓속말)
 					if (flag.equals("One")) {
@@ -116,39 +124,34 @@ public class MultiServerOriginal implements Limit{
 						//}catch(UnsupportedEncodingException e1){}
 						
 					}else if(flag.equals("OneFix")) {
+//						
+//						Iterator<String> map = nameMap.keySet().iterator();
+						//String key = map.next();
+//						String msg2 = "";
 						
-						String name2 = name;
-						String clientName2 = clientName;
-						it_out.println(name+" "+name2+" "+clientName+" "+clientName2);
-
-						Iterator<String> map = nameMap.keySet().iterator();
-						String key = map.next();
-						String msg2 = "";
-						Scanner scan = new Scanner(System.in);
 						
-						if(name2.equals("stop")) {
+						if(name.equals("stop")) {
 							it_out.println("귓속말을 종료합니다.");
 							break;
 		 				}
-						if(name.equals(key) && clientName.equals(nameMap.get(key))) {
-							it_out.println(name2+"에게 고정귓속말 시작");
+						//if(name.equals(key) && clientName.equals(nameMap.get(key))) {
+
+//							it_out.println(name+"에게 고정귓속말 시작");
 //							boolean tf = true;
 //							while(tf)
-								it_out.println("메세지를 작성하세요(종료는 exit입력) : ");
-								msg2 = scan.nextLine();
-								sendAllMsg(name, msg2,"One");
+//							it_out.println("메세지를 작성하세요(종료는 exit입력) : ");
+							//it_out.println("[귓속말]"+URLEncoder.encode(name, "UTF-8")+": "+URLEncoder.encode(msg, "UTF-8"));
+//							return;
+//							msg2= scan.nextLine();
+						
 //								if(msg2.equals("exit")) {
 //									tf = false;
 						
 //								}
-						}
+						//}
 						//try {
 						
-						
-						
-						it_out.println("귓속말을 종료하려면 /unfixto를 입력해주세요");
-						
-
+//						it_out.println("귓속말을 종료하려면 /unfixto를 입력해주세요");
 							
 						//}catch(UnsupportedEncodingException e1){}
 							
@@ -163,8 +166,6 @@ public class MultiServerOriginal implements Limit{
 								break;
 							}	
 								
-							
-							Scanner scan = new Scanner(System.in);
 							it_out.println("블럭차단을 종료하려면 /unblock을 입력해주세요");
 							//String exit;
 							//exit = scan.nextLine();
@@ -247,7 +248,18 @@ public class MultiServerOriginal implements Limit{
 
 			String name = "";
 			String s = "";
+			String s2= "";
+			//Thread receiver = new Receiver(socket);
 			
+			blacklist.add("짱구");
+			blacklist.add("흰둥이");
+			blacklist.add("짱아");
+			
+			pWords.add("바보");
+			pWords.add("메롱");
+			pWords.add("똥멍충이");
+			pWords.add("대출");
+			pWords.add("김미영팀장");
 			
 			try {
 				
@@ -260,17 +272,36 @@ public class MultiServerOriginal implements Limit{
 					// 클라이언트의 이름을 읽어온다.
 					name = in.readLine(); 
 					name = URLDecoder.decode(name,"UTF-8");
-					// 방금 접속한 클라이언트를 제외한 나머지에게 입장을 알린다.
-					sendAllMsg("",name + "님이 입장하셨습니다.","ALL"); 
+					
+					
 
+					Iterator<String> it = blacklist.iterator();
+
+					if (blacklist.contains(name)) {
+						out.println("차단된 회원 -> 접속 불가능");
+						out.println("서버와 연결이 해제되었습니다.");
+						return;
+					}
+					
+					
+					Scanner scan = new Scanner(System.in);
+					
 					// 현재 접속한 클라이언트를 HashMap에 저장한다.
-					clientMap.put(name, out);
+					if(clientMap.containsKey(name)) {
+						out.println("이미 존재하는 이름 입니다.");
+						
+					}else {
+						clientMap.put(name, out);
+						// 방금 접속한 클라이언트를 제외한 나머지에게 입장을 알린다.
+						sendAllMsg("",name + "님이 입장하셨습니다.","ALL"); 
+						
+						// 접속자의 이름을 서버의 콘솔에 띄워주고
+						System.out.println(name + " 접속");
+						// HashMap에 저장된 객체의 수로 현재 접속자를 파악할 수 있다.
+						System.out.println("현재 접속자 수는 "+clientMap.size()+"명 입니다.");
+					}
 
 					
-					// 접속자의 이름을 서버의 콘솔에 띄워주고
-					System.out.println(name + " 접속");
-					// HashMap에 저장된 객체의 수로 현재 접속자를 파악할 수 있다.
-					System.out.println("현재 접속자 수는 "+clientMap.size()+"명 입니다.");
 					
 					if (clientMap.size()>MAX_ACCEPT) {
 						System.out.println("최대 인원을 초과하여 접속이 불가능합니다..");
@@ -285,10 +316,16 @@ public class MultiServerOriginal implements Limit{
 						s = in.readLine();
 						//set.add(s);
 						s = URLDecoder.decode(s,"UTF-8");
-						System.out.println(s);
 						if(s==null) {
 							break;
 						}
+						
+						for (String pw : pWords) {
+							if(s.contains(pw)) {
+								s = "금칙어 입력 -> 메세지 전송 불가능";
+							}
+						}
+						
 						// 서버의 콘솔에 출력되고
 						System.out.println(name + " >> "+s); 
 						
@@ -301,6 +338,7 @@ public class MultiServerOriginal implements Limit{
 								msgContent += strArr[i]+" ";
 								
 							}
+							
 							if (strArr[0].equals("/to")) {
 								sendAllMsg(strArr[1], msgContent,"One");
 							}
@@ -308,12 +346,25 @@ public class MultiServerOriginal implements Limit{
 								sendAllMsg("", "","List");
 							}
 							if(strArr[0].equals("/fixto")) {
-								sendAllMsg(strArr[1], "","OneFix");
-								//set.add(msgContent);
+								out.println("고정귓속말을 시작합니다.\n"
+										+ "귓속말을 종료하려면 /unfixto를 입력해주세요");
+								
+								while(true) {
+									s2 = in.readLine();
+									//String[] strArr2 = s2.split(" ");
+//									out.println("strArr2[0] : " + strArr2[0]);									
+									if(s2.equals("/unfixto")){
+										sendAllMsg("stop", "", "OneFix");
+										break;
+									}else {
+										sendAllMsg(strArr[1], s2,"One");
+									}
+								}
+								
 							}
-							if(strArr[0].equals("/unfixto")) {
-								sendAllMsg("stop","" ,"OneFix");
-							}
+//							if(strArr[0].equals("/unfixto")) {
+//								sendAllMsg("stop","" ,"OneFix");
+//							}
 							if(strArr[0].equals("/block")) {
 								sendAllMsg("","" ,"Block");
 							}
@@ -321,18 +372,6 @@ public class MultiServerOriginal implements Limit{
 								sendAllMsg("stop","" ,"Block");
 							}
 							
-							
-							
-//						}else if(s.charAt(0)=='@'){
-//							if(strArr2[0].equals("/fixto")==true)
-//								String[] strArr2 = s.split(" ");
-//								String msgContent2 = "";
-//								for (int i = 2; i < strArr2.length; i++) {
-//									msgContent2 += strArr2[i]+" ";
-//								}
-//								if(strArr2[0].equals("/fixto")) {
-//									sendAllMsg(strArr2[1], msgContent2,"OneFix");
-//							}
 						}else {
 							sendAllMsg(name,s,"ALL"); 
 

@@ -16,21 +16,7 @@ public class MultiClient {
 		int nameCnt = 0;
 		
 		try {
-			// 블랙리스트 처리 부분
-			HashSet<String> blacklist = new HashSet<String>(); 
-			blacklist.add("스팸");
-			blacklist.add("음란물");
-			blacklist.add("광고");
-
-			Iterator<String> it = blacklist.iterator();
-
-			if (blacklist.contains(s_name)) {
-				System.out.println("접속 불가능");
-				return;
-			}
 			
-
-		
 			// 서버로 접속 요청
 			String ServerIP = "localhost";
 			if(args.length>0) {
