@@ -8,7 +8,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -38,6 +37,7 @@ public class MultiServerOriginal implements Limit{
 		clientMap = new HashMap<String, PrintWriter>();
 		// HashMap 동기화 설정. 쓰레드가 사용자 정보에 동시에 접근하는것을 차단함
 		Collections.synchronizedMap(clientMap);
+		
 		
 	}
 	
@@ -159,34 +159,38 @@ public class MultiServerOriginal implements Limit{
 					
 					}else if(flag.equals("Block")) {
 						
-						
-//							try {
-							if(name.equals("stop")) {
-								it_out.println("블럭차단을 종료합니다.");
-								break;
-							}	
-								
-							it_out.println("블럭차단을 종료하려면 /unblock을 입력해주세요");
-							//String exit;
-							//exit = scan.nextLine();
-							System.out.println("입력 : "+scan.nextLine());
+						blockMap.put(name, clientName);
+						Iterator<String> blockKeys = blockMap.keySet().iterator() ;
+						while (blockKeys.hasNext()) {
+							String key = blockKeys.next();
+	//							try {
+								if(key.contains(name) && blockMap.get(key).contains(clientName)) {
+									
+									break;
+								}
+//								else {
+//									it_out.println("["+name+"] : "+msg);
+//								}
+									
+						}
+						it_out.println("블럭차단을 종료하려면 /unblock을 입력해주세요");
+						if(name.equals("stop")) {
+							it_out.println("차단을 해제합니다.");
+							blockMap.remove(clientName);
+							break;
+		 				}
 							
-							
-//							}catch(UnsupportedEncodingException e1){}
 							
 						
 						
 					}else if(flag.equals("List")) {
 						
-//							try {
 							it_out.print("[현재 접속자] :");
 							for(String key : clientMap.keySet() ) {
-								//it_out.print("[list] : "+URLEncoder.encode(key, "UTF-8"));
 								it_out.print(key + " ");
 							}
 							it_out.println();
 
-//							}catch(UnsupportedEncodingException e1){}
 						
 					// 그 외에는 모든 클라이언트에게 전송한다.
 					} else {
@@ -245,7 +249,7 @@ public class MultiServerOriginal implements Limit{
 		}
 		@Override
 		public void run() {
-
+			Jdbc jdbc = new Jdbc();
 			String name = "";
 			String s = "";
 			String s2= "";
@@ -283,15 +287,13 @@ public class MultiServerOriginal implements Limit{
 						return;
 					}
 					
-					
-					Scanner scan = new Scanner(System.in);
-					
 					// 현재 접속한 클라이언트를 HashMap에 저장한다.
 					if(clientMap.containsKey(name)) {
 						out.println("이미 존재하는 이름 입니다.");
 						
 					}else {
 						clientMap.put(name, out);
+						
 						// 방금 접속한 클라이언트를 제외한 나머지에게 입장을 알린다.
 						sendAllMsg("",name + "님이 입장하셨습니다.","ALL"); 
 						
@@ -328,7 +330,7 @@ public class MultiServerOriginal implements Limit{
 						
 						// 서버의 콘솔에 출력되고
 						System.out.println(name + " >> "+s); 
-						
+						jdbc.dataInput(name,s);
 						
 						// 클라이언트 측으로 전송한다.
 						if (s.charAt(0)=='/') {
@@ -351,9 +353,13 @@ public class MultiServerOriginal implements Limit{
 								
 								while(true) {
 									s2 = in.readLine();
-									//String[] strArr2 = s2.split(" ");
-//									out.println("strArr2[0] : " + strArr2[0]);									
-									if(s2.equals("/unfixto")){
+									String[] strArr2 = s2.split(" ");
+									String msgContent2 = "";
+									for (int i = 2; i < strArr2.length; i++) {
+										msgContent2 += strArr2[i]+" ";
+										
+									}								
+									if(strArr2[0].equals("/unfixto")){
 										sendAllMsg("stop", "", "OneFix");
 										break;
 									}else {
@@ -362,9 +368,9 @@ public class MultiServerOriginal implements Limit{
 								}
 								
 							}
-//							if(strArr[0].equals("/unfixto")) {
-//								sendAllMsg("stop","" ,"OneFix");
-//							}
+							if(strArr[0].equals("/unfixto")) {
+								sendAllMsg("stop","" ,"OneFix");
+							}
 							if(strArr[0].equals("/block")) {
 								sendAllMsg("","" ,"Block");
 							}
@@ -400,6 +406,7 @@ public class MultiServerOriginal implements Limit{
 				try {
 					in.close();
 					out.close();
+					jdbc.close();
 					socket.close();
 				} catch (Exception e) {
 					e.printStackTrace();
