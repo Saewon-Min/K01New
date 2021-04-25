@@ -94,7 +94,8 @@ public class MultiServerOriginal implements Limit{
 		Iterator<String> it = clientMap.keySet().iterator();
 		//HashSet<String> set = new HashSet<String>();
 		Scanner scan = new Scanner(System.in);
-		
+		String fixName ="";
+		String unfixName="";
 		
 		// 저장된 객체(클라이언트)의 개수만큼 반복한다.
 		while(it.hasNext()) {
@@ -109,54 +110,44 @@ public class MultiServerOriginal implements Limit{
 				try {
 					// 각 클라이언트의 PrintWriter객체를 얻어온다.
 					PrintWriter it_out = (PrintWriter)clientMap.get(clientName); //clientName : key => key로 value값을 받아오는것
-					nameMap.put(name, clientName); // name: 보내는사람이름 ,clientName : 받는사람이름
-					System.out.println("보내는사람 : "+name+" 받는사람 : "+clientName);
-					
+//					nameMap.put(name, clientName); // name: 보내는사람이름 ,clientName : 받는사람이름
+//					System.out.println("보내는사람 : "+name+" 받는사람 : "+clientName);
+//					
 					
 					// flag가 One이면 해당 클라이언트 한명에게만 전송한다.(귓속말)
 					if (flag.equals("One")) {
-						//try {
+//						try {
 						// 컬렉션에 저장된 접속자명과 일치하는 경우에만 메세지를 전송한다.
 							if(name.equals(clientName)) {
+								nameMap.put(name, clientName); // name: 보내는사람이름 ,clientName : 받는사람이름
+								System.out.println("보내는사람 : "+name+" 받는사람 : "+clientName);
+								
 								it_out.println("[귓속말]"+URLEncoder.encode(name, "UTF-8")+": "+URLEncoder.encode(msg, "UTF-8"));
-								//it_out.println("[귓속말]"+name+": "+msg);
 							}
-						//}catch(UnsupportedEncodingException e1){}
+//							nameMap.put(fixName);
+//							fixName = name; //fixto name
+//							it_out.println("fixName위 : "+fixName);
+//						}catch(UnsupportedEncodingException e1){}
 						
 					}else if(flag.equals("OneFix")) {
-//						
-//						Iterator<String> map = nameMap.keySet().iterator();
-						//String key = map.next();
-//						String msg2 = "";
-						
-						
-						if(name.equals("stop")) {
-							it_out.println("귓속말을 종료합니다.");
-							break;
-		 				}
-						//if(name.equals(key) && clientName.equals(nameMap.get(key))) {
 
-//							it_out.println(name+"에게 고정귓속말 시작");
-//							boolean tf = true;
-//							while(tf)
-//							it_out.println("메세지를 작성하세요(종료는 exit입력) : ");
-							//it_out.println("[귓속말]"+URLEncoder.encode(name, "UTF-8")+": "+URLEncoder.encode(msg, "UTF-8"));
-//							return;
-//							msg2= scan.nextLine();
+//						Iterator<String> nameit = nameMap.keySet().iterator();
+//						String sendname = nameit.;
 						
-//								if(msg2.equals("exit")) {
-//									tf = false;
+//						for (String st : nameMap.keySet()) {
+//							System.out.println("key : " +st +"value :" +nameMap.get(st));
+//						}
+//						unfixName = name; // unfixto name
+//						it_out.println("key값아래 : "+nameMap.keySet());
+//						it_out.println("unfixName아래 : "+unfixName);
+//						
+//						if (nameMap.keySet().equals(unfixName)) {
+						if(name.equals(clientName)) {
+							it_out.println("귓속말을 종료합니다.");
+						}
+//						}
 						
-//								}
-						//}
-						//try {
-						
-//						it_out.println("귓속말을 종료하려면 /unfixto를 입력해주세요");
-							
-						//}catch(UnsupportedEncodingException e1){}
-							
-						
-					
+		 				
 					}else if(flag.equals("Block")) {
 						
 						blockMap.put(name, clientName);
@@ -288,6 +279,8 @@ public class MultiServerOriginal implements Limit{
 					// 현재 접속한 클라이언트를 HashMap에 저장한다.
 					if(clientMap.containsKey(name)) {
 						out.println("이미 존재하는 이름 입니다.");
+						clientMap.remove(name);
+						clientMap.put(name, out);
 						
 					}else {
 						clientMap.put(name, out);
@@ -347,8 +340,7 @@ public class MultiServerOriginal implements Limit{
 							}
 							if(strArr[0].equals("/fixto")) {
 								out.println("고정귓속말을 시작합니다.\n"
-										+ "귓속말을 종료하려면 /unfixto를 입력해주세요");
-								
+										+ "귓속말을 종료하려면 /unfixto 이름 을 입력해주세요");
 								while(true) {
 									s2 = in.readLine();
 									s2 = URLDecoder.decode(s2,"UTF-8");
@@ -357,22 +349,16 @@ public class MultiServerOriginal implements Limit{
 										String msgContent2 = "";
 										for (int i = 2; i < strArr2.length; i++) {
 											msgContent2 += strArr2[i]+" ";
-											
-											if(strArr2[0].contains("/unfixto")){
-												sendAllMsg(strArr2[1],"", "OneFix");
-												break;
-												
-											}
+										}
+										if(strArr2[0].contains("/unfixto")){
+											sendAllMsg(strArr2[1],"", "OneFix");
+											break;
 										}
 									}else {
 										sendAllMsg(strArr[1], s2,"One");
 									}
 								}
-								
 							}
-//							if(strArr[0].equals("/unfixto")) {
-//								sendAllMsg("stop","" ,"OneFix");
-//							}
 							if(strArr[0].equals("/block")) {
 								sendAllMsg("","" ,"Block");
 							}
