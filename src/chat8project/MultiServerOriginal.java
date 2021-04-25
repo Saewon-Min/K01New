@@ -108,7 +108,7 @@ public class MultiServerOriginal implements Limit{
 				
 				try {
 					// 각 클라이언트의 PrintWriter객체를 얻어온다.
-					PrintWriter it_out = (PrintWriter)clientMap.get(clientName);
+					PrintWriter it_out = (PrintWriter)clientMap.get(clientName); //clientName : key => key로 value값을 받아오는것
 					nameMap.put(name, clientName); // name: 보내는사람이름 ,clientName : 받는사람이름
 					System.out.println("보내는사람 : "+name+" 받는사람 : "+clientName);
 					
@@ -118,8 +118,8 @@ public class MultiServerOriginal implements Limit{
 						//try {
 						// 컬렉션에 저장된 접속자명과 일치하는 경우에만 메세지를 전송한다.
 							if(name.equals(clientName)) {
-								//it_out.println("[귓속말]"+URLEncoder.encode(name, "UTF-8")+": "+URLEncoder.encode(msg, "UTF-8"));
-								it_out.println("[귓속말]"+name+": "+msg);
+								it_out.println("[귓속말]"+URLEncoder.encode(name, "UTF-8")+": "+URLEncoder.encode(msg, "UTF-8"));
+								//it_out.println("[귓속말]"+name+": "+msg);
 							}
 						//}catch(UnsupportedEncodingException e1){}
 						
@@ -261,9 +261,7 @@ public class MultiServerOriginal implements Limit{
 			
 			pWords.add("바보");
 			pWords.add("메롱");
-			pWords.add("똥멍충이");
 			pWords.add("대출");
-			pWords.add("김미영팀장");
 			
 			try {
 				
@@ -320,7 +318,7 @@ public class MultiServerOriginal implements Limit{
 						s = URLDecoder.decode(s,"UTF-8");
 						if(s==null) {
 							break;
-						}
+						} 
 						
 						for (String pw : pWords) {
 							if(s.contains(pw)) {
@@ -330,7 +328,7 @@ public class MultiServerOriginal implements Limit{
 						
 						// 서버의 콘솔에 출력되고
 						System.out.println(name + " >> "+s); 
-						jdbc.dataInput(name,s);
+						//jdbc.dataInput(name,s);
 						
 						// 클라이언트 측으로 전송한다.
 						if (s.charAt(0)=='/') {
@@ -353,24 +351,28 @@ public class MultiServerOriginal implements Limit{
 								
 								while(true) {
 									s2 = in.readLine();
-									String[] strArr2 = s2.split(" ");
-									String msgContent2 = "";
-									for (int i = 2; i < strArr2.length; i++) {
-										msgContent2 += strArr2[i]+" ";
-										
-									}								
-									if(strArr2[0].equals("/unfixto")){
-										sendAllMsg("stop", "", "OneFix");
-										break;
+									s2 = URLDecoder.decode(s2,"UTF-8");
+									if (s2.charAt(0)=='/') {
+										String[] strArr2 = s2.split(" ");
+										String msgContent2 = "";
+										for (int i = 2; i < strArr2.length; i++) {
+											msgContent2 += strArr2[i]+" ";
+											
+											if(strArr2[0].contains("/unfixto")){
+												sendAllMsg(strArr2[1],"", "OneFix");
+												break;
+												
+											}
+										}
 									}else {
 										sendAllMsg(strArr[1], s2,"One");
 									}
 								}
 								
 							}
-							if(strArr[0].equals("/unfixto")) {
-								sendAllMsg("stop","" ,"OneFix");
-							}
+//							if(strArr[0].equals("/unfixto")) {
+//								sendAllMsg("stop","" ,"OneFix");
+//							}
 							if(strArr[0].equals("/block")) {
 								sendAllMsg("","" ,"Block");
 							}
