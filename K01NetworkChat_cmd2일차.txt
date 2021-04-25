@@ -1,0 +1,576 @@
+<<<<<<< HEAD
+-----------------------------------------서버------------------------------------
+
+
+Microsoft Windows [Version 10.0.19042.867]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\msw>cd \
+
+C:\>cd \d
+지정된 경로를 찾을 수 없습니다.
+
+C:\>cd ..
+
+C:\>cd d
+지정된 경로를 찾을 수 없습니다.
+
+C:\>d:
+
+D:\>02Workspaces\K01NetworkChat\bin
+'02Workspaces\K01NetworkChat\bin'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+D:\>cd 02Workspaces\K01NetworkChat\bin
+
+D:\02Workspaces\K01NetworkChat\bin>java chat4.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 14025포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+세오니 접속
+세오니 ==> 안농
+세오니 ==> 안농
+세오니 ==> 안녀어엉
+세오니 ==> ㅂ
+Bye
+
+D:\02Workspaces\K01NetworkChat\bin>java chat4.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 14042포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+세오니 접속
+세오니 ==> ㅇㅇ
+세오니 ==> ㅇㅇ
+세오니 ==> ㅇㅇ
+세오니 ==> ㄷㄷ
+세오니 ==> ㅂ
+Bye
+
+D:\02Workspaces\K01NetworkChat\bin>java chat4.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 14069포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+dd 접속
+dd ==> dd
+dd ==> ww
+dd ==> ww
+dd ==> uu
+Bye
+
+D:\02Workspaces\K01NetworkChat\bin>java chat5.MultiServer
+서버가 시작되었습니다.
+세오니 접속
+떼오니 접속
+세오니 >> 111
+세오니 >> 222
+떼오니 >> 111
+떼오니 >> 222
+떼오니 >> ㅂ
+Thread-1종료
+세오니 >> ㅂ
+Thread-0종료
+
+D:\02Workspaces\K01NetworkChat\bin>java chat6.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1(클라이언트)의 1885포트를 통해 /127.0.0.1(서버)의 9999포트로 연결되었습니다.
+세오니 접속
+현재 접속자 수는 1명 입니다.
+/127.0.0.1(클라이언트)의 1886포트를 통해 /127.0.0.1(서버)의 9999포트로 연결되었습니다.
+떼오니 접속
+현재 접속자 수는 2명 입니다.
+/127.0.0.1(클라이언트)의 1905포트를 통해 /127.0.0.1(서버)의 9999포트로 연결되었습니다.
+민세투 접속
+현재 접속자 수는 3명 입니다.
+민세투 >> 안농
+민세투 >> 너네는 누구야
+떼오니 >> 나는 떼오니
+세오니 >> 나는 세오니
+세오니 >> ㅎㅎ 너는 누구야
+민세투 >> 나는 민세투
+떼오니[Thread-1] 퇴장
+현재 접속자 수는 2명 입니다.
+민세투 >> ㅂ
+민세투[Thread-2] 퇴장
+현재 접속자 수는 1명 입니다.
+세오니[Thread-0] 퇴장
+현재 접속자 수는 0명 입니다.
+
+D:\02Workspaces\K01NetworkChat\bin>
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------클라이언트1
+Microsoft Windows [Version 10.0.19042.867]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\msw>d:
+
+D:\>cd 02Workspaces\K01NetworkChat\bin
+
+D:\02Workspaces\K01NetworkChat\bin>java chat4.MultiClient
+이름을 입력하세요 :
+세오니
+서버와 연결되었습니다.
+Thread Receive : > 세오니님이 접속했습니다.
+안농
+Thread Receive : >  세오니 ==> 안농
+안농
+Thread Receive : >  세오니 ==> 안농
+안녀어엉
+Thread Receive : >  세오니 ==> 안녀어엉
+ㅂ
+Thread Receive : >  세오니 ==> ㅂ
+q
+SocketException 발생됨 . 루프탈출
+
+D:\02Workspaces\K01NetworkChat\bin>java chat4.MultiClient
+이름을 입력하세요 :
+세오니
+예외발생[MultiClient]java.net.ConnectException: Connection refused: connect
+
+D:\02Workspaces\K01NetworkChat\bin>java chat4.MultiClient
+이름을 입력하세요 :
+세오니
+서버와 연결되었습니다.
+Thread Receive : > 세오니님이 접속했습니다.
+ㅇㅇ
+Thread Receive : >  세오니 ==> ㅇㅇ
+ㅇㅇ
+Thread Receive : >  세오니 ==> ㅇㅇ
+ㅇㅇ
+Thread Receive : >  세오니 ==> ㅇㅇ
+ㄷㄷ
+Thread Receive : >  세오니 ==> ㄷㄷ
+ㅂ
+Thread Receive : >  세오니 ==> ㅂ
+q
+예외2 : java.net.SocketException: Socket closed
+
+D:\02Workspaces\K01NetworkChat\bin>
+D:\02Workspaces\K01NetworkChat\bin>java chat4.MultiClient
+이름을 입력하세요 :
+dd
+서버와 연결되었습니다.
+Thread Receive : > dd님이 접속했습니다.
+dd
+Thread Receive : >  dd ==> dd
+ww
+Thread Receive : >  dd ==> ww
+ww
+Thread Receive : >  dd ==> ww
+uu
+Thread Receive : >  dd ==> uu
+q
+SocketException 발생됨 . 루프탈출
+
+D:\02Workspaces\K01NetworkChat\bin>java chat5.MultiClient
+Error: Could not find or load main class chat5.MultiClient
+Caused by: java.lang.ClassNotFoundException: chat5.MultiClient
+
+D:\02Workspaces\K01NetworkChat\bin>java chat5.MultiClient
+이름을 입력하세요 :
+떼오니
+서버와 연결되었습니다.
+Thread Receive : > 떼오니님이 접속했습니다.
+111
+Thread Receive : > 떼오니 ==> 111
+222
+Thread Receive : > 떼오니 ==> 222
+ㅂ
+Thread Receive : > 떼오니 ==> ㅂ
+q
+SocketException 발생됨 . 루프탈출
+
+D:\02Workspaces\K01NetworkChat\bin>java chat6.MultiClient
+이름을 입력하세요 :
+세오니
+서버와 연결되었습니다.
+Thread Receive : 떼오니님이 입장하셨습니다.
+Thread Receive : 민세투님이 입장하셨습니다.
+Thread Receive : [민세투] : 안농
+Thread Receive : [민세투] : 너네는 누구야
+Thread Receive : [떼오니] : 나는 떼오니
+나는 세오니
+Thread Receive : [세오니] : 나는 세오니
+ㅎㅎ 너는 누구야
+Thread Receive : [세오니] : ㅎㅎ 너는 누구야
+Thread Receive : [민세투] : 나는 민세투
+Thread Receive : 떼오니님이 퇴장하셨습니다.
+Thread Receive : [민세투] : ㅂ
+Thread Receive : 민세투님이 퇴장하셨습니다.
+q
+SocketException 발생됨 . 루프탈출
+
+D:\02Workspaces\K01NetworkChat\bin>
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------클라이언트2
+Microsoft Windows [Version 10.0.19042.867]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\msw>d:
+
+D:\>cd 02Workspaces\K01NetworkChat\bin
+
+D:\02Workspaces\K01NetworkChat\bin>java chat5.MultiClient
+이름을 입력하세요 :
+세오니
+서버와 연결되었습니다.
+Thread Receive : > 세오니님이 접속했습니다.
+111
+Thread Receive : > 세오니 ==> 111
+222
+Thread Receive : > 세오니 ==> 222
+ㅂ
+Thread Receive : > 세오니 ==> ㅂ
+q
+SocketException 발생됨 . 루프탈출
+
+D:\02Workspaces\K01NetworkChat\bin>java chat6.MultiClient
+이름을 입력하세요 :
+떼오니
+서버와 연결되었습니다.
+Thread Receive : 민세투님이 입장하셨습니다.
+Thread Receive : [민세투] : 안농
+Thread Receive : [민세투] : 너네는 누구야
+나는 떼오니
+Thread Receive : [떼오니] : 나는 떼오니
+Thread Receive : [세오니] : 나는 세오니
+Thread Receive : [세오니] : ㅎㅎ 너는 누구야
+Thread Receive : [민세투] : 나는 민세투
+q
+SocketException 발생됨 . 루프탈출
+
+D:\02Workspaces\K01NetworkChat\bin>
+
+
+
+
+
+
+-------------------------------------------------------------------클라이언트3
+
+D:\>cd 02Workspaces\K01NetworkChat\bin
+
+D:\02Workspaces\K01NetworkChat\bin>java chat6.MultiClient
+이름을 입력하세요 :
+민세투
+서버와 연결되었습니다.
+안농
+Thread Receive : [민세투] : 안농
+너네는 누구야
+Thread Receive : [민세투] : 너네는 누구야
+Thread Receive : [떼오니] : 나는 떼오니
+Thread Receive : [세오니] : 나는 세오니
+Thread Receive : [세오니] : ㅎㅎ 너는 누구야
+나는 민세투
+Thread Receive : [민세투] : 나는 민세투
+Thread Receive : 떼오니님이 퇴장하셨습니다.
+ㅂ
+Thread Receive : [민세투] : ㅂ
+q
+SocketException 발생됨 . 루프탈출
+
+=======
+-----------------------------------------서버------------------------------------
+
+
+Microsoft Windows [Version 10.0.19042.867]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\msw>cd \
+
+C:\>cd \d
+지정된 경로를 찾을 수 없습니다.
+
+C:\>cd ..
+
+C:\>cd d
+지정된 경로를 찾을 수 없습니다.
+
+C:\>d:
+
+D:\>02Workspaces\K01NetworkChat\bin
+'02Workspaces\K01NetworkChat\bin'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+D:\>cd 02Workspaces\K01NetworkChat\bin
+
+D:\02Workspaces\K01NetworkChat\bin>java chat4.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 14025포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+세오니 접속
+세오니 ==> 안농
+세오니 ==> 안농
+세오니 ==> 안녀어엉
+세오니 ==> ㅂ
+Bye
+
+D:\02Workspaces\K01NetworkChat\bin>java chat4.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 14042포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+세오니 접속
+세오니 ==> ㅇㅇ
+세오니 ==> ㅇㅇ
+세오니 ==> ㅇㅇ
+세오니 ==> ㄷㄷ
+세오니 ==> ㅂ
+Bye
+
+D:\02Workspaces\K01NetworkChat\bin>java chat4.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1의 14069포트에 /127.0.0.1의 9999포트로 연결되었습니다.
+dd 접속
+dd ==> dd
+dd ==> ww
+dd ==> ww
+dd ==> uu
+Bye
+
+D:\02Workspaces\K01NetworkChat\bin>java chat5.MultiServer
+서버가 시작되었습니다.
+세오니 접속
+떼오니 접속
+세오니 >> 111
+세오니 >> 222
+떼오니 >> 111
+떼오니 >> 222
+떼오니 >> ㅂ
+Thread-1종료
+세오니 >> ㅂ
+Thread-0종료
+
+D:\02Workspaces\K01NetworkChat\bin>java chat6.MultiServer
+서버가 시작되었습니다.
+/127.0.0.1(클라이언트)의 1885포트를 통해 /127.0.0.1(서버)의 9999포트로 연결되었습니다.
+세오니 접속
+현재 접속자 수는 1명 입니다.
+/127.0.0.1(클라이언트)의 1886포트를 통해 /127.0.0.1(서버)의 9999포트로 연결되었습니다.
+떼오니 접속
+현재 접속자 수는 2명 입니다.
+/127.0.0.1(클라이언트)의 1905포트를 통해 /127.0.0.1(서버)의 9999포트로 연결되었습니다.
+민세투 접속
+현재 접속자 수는 3명 입니다.
+민세투 >> 안농
+민세투 >> 너네는 누구야
+떼오니 >> 나는 떼오니
+세오니 >> 나는 세오니
+세오니 >> ㅎㅎ 너는 누구야
+민세투 >> 나는 민세투
+떼오니[Thread-1] 퇴장
+현재 접속자 수는 2명 입니다.
+민세투 >> ㅂ
+민세투[Thread-2] 퇴장
+현재 접속자 수는 1명 입니다.
+세오니[Thread-0] 퇴장
+현재 접속자 수는 0명 입니다.
+
+D:\02Workspaces\K01NetworkChat\bin>
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------클라이언트1
+Microsoft Windows [Version 10.0.19042.867]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\msw>d:
+
+D:\>cd 02Workspaces\K01NetworkChat\bin
+
+D:\02Workspaces\K01NetworkChat\bin>java chat4.MultiClient
+이름을 입력하세요 :
+세오니
+서버와 연결되었습니다.
+Thread Receive : > 세오니님이 접속했습니다.
+안농
+Thread Receive : >  세오니 ==> 안농
+안농
+Thread Receive : >  세오니 ==> 안농
+안녀어엉
+Thread Receive : >  세오니 ==> 안녀어엉
+ㅂ
+Thread Receive : >  세오니 ==> ㅂ
+q
+SocketException 발생됨 . 루프탈출
+
+D:\02Workspaces\K01NetworkChat\bin>java chat4.MultiClient
+이름을 입력하세요 :
+세오니
+예외발생[MultiClient]java.net.ConnectException: Connection refused: connect
+
+D:\02Workspaces\K01NetworkChat\bin>java chat4.MultiClient
+이름을 입력하세요 :
+세오니
+서버와 연결되었습니다.
+Thread Receive : > 세오니님이 접속했습니다.
+ㅇㅇ
+Thread Receive : >  세오니 ==> ㅇㅇ
+ㅇㅇ
+Thread Receive : >  세오니 ==> ㅇㅇ
+ㅇㅇ
+Thread Receive : >  세오니 ==> ㅇㅇ
+ㄷㄷ
+Thread Receive : >  세오니 ==> ㄷㄷ
+ㅂ
+Thread Receive : >  세오니 ==> ㅂ
+q
+예외2 : java.net.SocketException: Socket closed
+
+D:\02Workspaces\K01NetworkChat\bin>
+D:\02Workspaces\K01NetworkChat\bin>java chat4.MultiClient
+이름을 입력하세요 :
+dd
+서버와 연결되었습니다.
+Thread Receive : > dd님이 접속했습니다.
+dd
+Thread Receive : >  dd ==> dd
+ww
+Thread Receive : >  dd ==> ww
+ww
+Thread Receive : >  dd ==> ww
+uu
+Thread Receive : >  dd ==> uu
+q
+SocketException 발생됨 . 루프탈출
+
+D:\02Workspaces\K01NetworkChat\bin>java chat5.MultiClient
+Error: Could not find or load main class chat5.MultiClient
+Caused by: java.lang.ClassNotFoundException: chat5.MultiClient
+
+D:\02Workspaces\K01NetworkChat\bin>java chat5.MultiClient
+이름을 입력하세요 :
+떼오니
+서버와 연결되었습니다.
+Thread Receive : > 떼오니님이 접속했습니다.
+111
+Thread Receive : > 떼오니 ==> 111
+222
+Thread Receive : > 떼오니 ==> 222
+ㅂ
+Thread Receive : > 떼오니 ==> ㅂ
+q
+SocketException 발생됨 . 루프탈출
+
+D:\02Workspaces\K01NetworkChat\bin>java chat6.MultiClient
+이름을 입력하세요 :
+세오니
+서버와 연결되었습니다.
+Thread Receive : 떼오니님이 입장하셨습니다.
+Thread Receive : 민세투님이 입장하셨습니다.
+Thread Receive : [민세투] : 안농
+Thread Receive : [민세투] : 너네는 누구야
+Thread Receive : [떼오니] : 나는 떼오니
+나는 세오니
+Thread Receive : [세오니] : 나는 세오니
+ㅎㅎ 너는 누구야
+Thread Receive : [세오니] : ㅎㅎ 너는 누구야
+Thread Receive : [민세투] : 나는 민세투
+Thread Receive : 떼오니님이 퇴장하셨습니다.
+Thread Receive : [민세투] : ㅂ
+Thread Receive : 민세투님이 퇴장하셨습니다.
+q
+SocketException 발생됨 . 루프탈출
+
+D:\02Workspaces\K01NetworkChat\bin>
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------클라이언트2
+Microsoft Windows [Version 10.0.19042.867]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\msw>d:
+
+D:\>cd 02Workspaces\K01NetworkChat\bin
+
+D:\02Workspaces\K01NetworkChat\bin>java chat5.MultiClient
+이름을 입력하세요 :
+세오니
+서버와 연결되었습니다.
+Thread Receive : > 세오니님이 접속했습니다.
+111
+Thread Receive : > 세오니 ==> 111
+222
+Thread Receive : > 세오니 ==> 222
+ㅂ
+Thread Receive : > 세오니 ==> ㅂ
+q
+SocketException 발생됨 . 루프탈출
+
+D:\02Workspaces\K01NetworkChat\bin>java chat6.MultiClient
+이름을 입력하세요 :
+떼오니
+서버와 연결되었습니다.
+Thread Receive : 민세투님이 입장하셨습니다.
+Thread Receive : [민세투] : 안농
+Thread Receive : [민세투] : 너네는 누구야
+나는 떼오니
+Thread Receive : [떼오니] : 나는 떼오니
+Thread Receive : [세오니] : 나는 세오니
+Thread Receive : [세오니] : ㅎㅎ 너는 누구야
+Thread Receive : [민세투] : 나는 민세투
+q
+SocketException 발생됨 . 루프탈출
+
+D:\02Workspaces\K01NetworkChat\bin>
+
+
+
+
+
+
+-------------------------------------------------------------------클라이언트3
+
+D:\>cd 02Workspaces\K01NetworkChat\bin
+
+D:\02Workspaces\K01NetworkChat\bin>java chat6.MultiClient
+이름을 입력하세요 :
+민세투
+서버와 연결되었습니다.
+안농
+Thread Receive : [민세투] : 안농
+너네는 누구야
+Thread Receive : [민세투] : 너네는 누구야
+Thread Receive : [떼오니] : 나는 떼오니
+Thread Receive : [세오니] : 나는 세오니
+Thread Receive : [세오니] : ㅎㅎ 너는 누구야
+나는 민세투
+Thread Receive : [민세투] : 나는 민세투
+Thread Receive : 떼오니님이 퇴장하셨습니다.
+ㅂ
+Thread Receive : [민세투] : ㅂ
+q
+SocketException 발생됨 . 루프탈출
+
+>>>>>>> refs/remotes/origin/master
+D:\02Workspaces\K01NetworkChat\bin>
