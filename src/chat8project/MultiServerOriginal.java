@@ -119,7 +119,7 @@ public class MultiServerOriginal implements Limit{
 //						try {
 						// 컬렉션에 저장된 접속자명과 일치하는 경우에만 메세지를 전송한다.
 							if(name.equals(clientName)) {
-								nameMap.put(name, clientName); // name: 보내는사람이름 ,clientName : 받는사람이름
+								//nameMap.put(name, clientName); // name: 보내는사람이름 ,clientName : 받는사람이름
 								System.out.println("보내는사람 : "+name+" 받는사람 : "+clientName);
 								
 								it_out.println("[귓속말]"+URLEncoder.encode(name, "UTF-8")+": "+URLEncoder.encode(msg, "UTF-8"));
@@ -142,9 +142,9 @@ public class MultiServerOriginal implements Limit{
 //						it_out.println("unfixName아래 : "+unfixName);
 //						
 //						if (nameMap.keySet().equals(unfixName)) {
-						if(name.equals(clientName)) {
-							it_out.println("귓속말을 종료합니다.");
-						}
+						
+						it_out.println("귓속말을 종료합니다.");
+						
 //						}
 						
 		 				
@@ -358,6 +358,9 @@ public class MultiServerOriginal implements Limit{
 										sendAllMsg(strArr[1], s2,"One");
 									}
 								}
+								
+//								nameMap.put(name, strArr[1]);
+								
 							}
 							if(strArr[0].equals("/block")) {
 								sendAllMsg("","" ,"Block");
